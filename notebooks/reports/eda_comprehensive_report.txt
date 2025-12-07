@@ -1,0 +1,7 @@
+EDA Report - Generated on 2025-12-07
+==================================================
+
+Total Records: 5,000
+Total Premium: R 55,092,695.35
+Total Claims: R 59,527,064.09
+Loss Ratio: 108.05%
