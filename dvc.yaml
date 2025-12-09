@@ -1,41 +1,47 @@
 stages:
   preprocess:
-    cmd: python src/data/preprocess.py
+    cmd: python -c "
+import pandas as pd
+import json
+from pathlib import Path
+
+# Load data
+df = pd.read_csv('data/raw/insurance_sample_data.csv')
+print(f'Loaded: {df.shape}')
+
+# Basic preprocessing
+if 'TotalClaims' in df.columns and 'TotalPremium' in df.columns:
+    df['LossRatio'] = df['TotalClaims'] / df['TotalPremium'].replace(0, 1)
+
+# Save processed
+Path('data/processed').mkdir(exist_ok=True)
+df.to_csv('data/processed/cleaned_data.csv', index=False)
+
+# Save metrics
+Path('reports/metrics').mkdir(exist_ok=True)
+metrics = {
+    'rows': int(len(df)),
+    'cols': int(len(df.columns)),
+    'avg_loss_ratio': float(df['LossRatio'].mean()) if 'LossRatio' in df.columns else 0
+}
+with open('reports/metrics/preprocess.json', 'w') as f:
+    json.dump(metrics, f, indent=2)
+print('Preprocessing done')
+"
     deps:
-      - src/data/preprocess.py
       - data/raw/insurance_sample_data.csv
-      - params.yaml
-    params:
-      - data
-      - preprocessing
     outs:
       - data/processed/cleaned_data.csv
     metrics:
-      - reports/metrics/preprocess_metrics.json
+      - reports/metrics/preprocess.json
 
-  analyze:
-    cmd: python src/visualization/create_plots.py
+  visualize:
+    cmd: python src/visualization/create_plots_simple.py
     deps:
       - data/processed/cleaned_data.csv
-      - src/visualization/create_plots.py
-    params:
-      - data
+      - src/visualization/create_plots_simple.py
     outs:
       - reports/figures/loss_ratio_by_province.png
-      - reports/figures/risk_heatmap.png
       - reports/figures/correlation_matrix.png
     metrics:
-      - reports/metrics/eda_metrics.json
-
-  train:
-    cmd: python src/models/train_model.py
-    deps:
-      - data/processed/cleaned_data.csv
-      - src/models/train_model.py
-    params:
-      - model
-    outs:
-      - models/random_forest.pkl
-      - models/linear_regression.pkl
-    metrics:
-      - reports/metrics/model_metrics.json
+      - reports/metrics/visualization.json
