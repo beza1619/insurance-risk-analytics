@@ -1,0 +1,8 @@
+{
+  "figures_created": 2,
+  "data_shape": [
+    5000,
+    20
+  ],
+  "numeric_columns": 11
+}
