@@ -1,0 +1,23 @@
+cmd: python scripts/visualize.py
+deps:
+- path: data/processed/cleaned_data.csv
+  hash: md5
+  md5: a427664ab7601dd73e7e286ccbc677e7
+  size: 861528
+- path: scripts/visualize.py
+  hash: md5
+  md5: b632e76bc6821ddd8dc91be09e26b5df
+  size: 2114
+outs:
+- path: reports/figures/correlation_matrix.png
+  hash: md5
+  md5: 2fccb9bdf0f6d01b542bd68dea2cabe2
+  size: 87504
+- path: reports/figures/loss_ratio_by_province.png
+  hash: md5
+  md5: 6aeee739c082a33dd0f24dd3a896d72e
+  size: 28660
+- path: reports/metrics/visualization.json
+  hash: md5
+  md5: 1b69b4cd8a377bb7c55b96b55616dcf9
+  size: 98
