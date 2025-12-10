@@ -1,0 +1,64 @@
+
+# dvc.yaml - Complete Insurance Analytics Pipeline
+# Version: 1.0
+# Author: ACIS Analytics Team
+
+stages:
+  preprocess:
+    cmd: python src/data/preprocess.py
+    deps:
+      - src/data/preprocess.py
+      - data/raw/insurance_data.csv
+      - config/params.yaml
+    params:
+      - preprocess.test_size
+      - preprocess.random_state
+    outs:
+      - data/processed/cleaned_data.csv
+    metrics:
+      - reports/metrics/preprocess_metrics.json:
+          cache: false
+
+  eda:
+    cmd: python src/analysis/eda.py
+    deps:
+      - src/analysis/eda.py
+      - data/processed/cleaned_data.csv
+    outs:
+      - reports/figures/loss_ratio_by_province.png
+      - reports/figures/risk_heatmap_province_vehicle.png
+      - reports/figures/vehicle_type_analysis.png
+      - reports/figures/gender_analysis.png
+    metrics:
+      - reports/metrics/eda_metrics.json:
+          cache: false
+
+  hypothesis:
+    cmd: python src/analysis/hypothesis_testing.py
+    deps:
+      - src/analysis/hypothesis_testing.py
+      - data/processed/cleaned_data.csv
+      - config/params.yaml
+    params:
+      - hypothesis.alpha
+    outs:
+      - reports/figures/hypothesis_testing/
+    metrics:
+      - reports/metrics/hypothesis_results.json:
+          cache: false
+
+  modeling:
+    cmd: python src/models/train.py
+    deps:
+      - src/models/train.py
+      - data/processed/cleaned_data.csv
+      - config/params.yaml
+    params:
+      - model.random_forest.n_estimators
+      - model.random_forest.max_depth
+    outs:
+      - models/random_forest.joblib
+      - models/linear_regression.joblib
+    metrics:
+      - reports/metrics/model_performance.json:
+          cache: false

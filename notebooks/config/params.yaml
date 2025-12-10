@@ -1,0 +1,37 @@
+
+# params.yaml - Configuration parameters
+# Version: 1.0
+
+preprocess:
+  test_size: 0.2
+  random_state: 42
+  output_dir: "data/processed"
+
+eda:
+  output_dir: "reports/figures"
+  metrics_path: "reports/metrics/eda_metrics.json"
+
+hypothesis:
+  alpha: 0.05
+  tests:
+    - province_risk
+    - zipcode_density
+    - gender_difference
+    - vehicle_type_risk
+
+model:
+  target: "TotalClaims"
+  features:
+    - "VehicleAge"
+    - "CubicCapacity"
+    - "VehicleType"
+    - "Province"
+    - "PreviousClaims"
+    - "Gender"
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+  linear_regression:
+    fit_intercept: true
+  test_size: 0.2

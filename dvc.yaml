@@ -1,0 +1,21 @@
+stages:
+  preprocess:
+    cmd: python scripts/preprocess.py
+    deps:
+      - scripts/preprocess.py
+      - data/raw/insurance_sample_data.csv
+    outs:
+      - data/processed/cleaned_data.csv
+    metrics:
+      - reports/metrics/preprocess.json
+
+  visualize:
+    cmd: python scripts/visualize.py
+    deps:
+      - scripts/visualize.py
+      - data/processed/cleaned_data.csv
+    outs:
+      - reports/figures/loss_ratio_by_province.png
+      - reports/figures/correlation_matrix.png
+    metrics:
+      - reports/metrics/visualization.json

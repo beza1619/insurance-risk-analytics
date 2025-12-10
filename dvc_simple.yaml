@@ -1,0 +1,7 @@
+stages:
+  test:
+    cmd: python scripts/test_simple.py
+    deps:
+      - scripts/test_simple.py
+    outs:
+      - test_output.txt

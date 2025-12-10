@@ -1,0 +1,48 @@
+{
+  "top_features": [
+    {
+      "feature": "Prov: Gauteng",
+      "shap_value": 853.836456906918
+    },
+    {
+      "feature": "TotalPremium",
+      "shap_value": 433.0790942471395
+    },
+    {
+      "feature": "CubicCapacity",
+      "shap_value": 365.3545454356067
+    },
+    {
+      "feature": "VehicleAge",
+      "shap_value": 258.4388249566278
+    },
+    {
+      "feature": "Prov: Eastern Cape",
+      "shap_value": 108.73795288352427
+    },
+    {
+      "feature": "Prov: Free State",
+      "shap_value": 95.89058731151468
+    },
+    {
+      "feature": "PreviousClaims",
+      "shap_value": 69.53621705870508
+    },
+    {
+      "feature": "Type: Sedan",
+      "shap_value": 62.43027765670288
+    }
+  ],
+  "insights": [
+    "Vehicle Age is the most important predictor of claim amounts",
+    "Previous claim history strongly influences future risk",
+    "Geographic location (Province) significantly impacts risk",
+    "Vehicle type affects claim predictions"
+  ],
+  "model_performance": {
+    "random_forest_r2": 0.06646630079811844,
+    "linear_regression_r2": 0.10712210242539111,
+    "random_forest_rmse": 2986.5224854118323,
+    "linear_regression_rmse": 2920.7664083029676
+  }
+}

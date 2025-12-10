@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python scripts/preprocess.py
+    deps:
+    - path: data/raw/insurance_sample_data.csv
+      hash: md5
+      md5: fc67f9816ee4963574a2f7f5c6b18ed3
+      size: 871045
+    - path: scripts/preprocess.py
+      hash: md5
+      md5: 70e15269d6b25147fdbfa555dec877d9
+      size: 1732
+    outs:
+    - path: data/processed/cleaned_data.csv
+      hash: md5
+      md5: a427664ab7601dd73e7e286ccbc677e7
+      size: 861528
+    - path: reports/metrics/preprocess.json
+      hash: md5
+      md5: 8b7c24abf10c9179755ba59bf1a6e013
+      size: 130
+  visualize:
+    cmd: python scripts/visualize.py
+    deps:
+    - path: data/processed/cleaned_data.csv
+      hash: md5
+      md5: a427664ab7601dd73e7e286ccbc677e7
+      size: 861528
+    - path: scripts/visualize.py
+      hash: md5
+      md5: b632e76bc6821ddd8dc91be09e26b5df
+      size: 2114
+    outs:
+    - path: reports/figures/correlation_matrix.png
+      hash: md5
+      md5: 2fccb9bdf0f6d01b542bd68dea2cabe2
+      size: 87504
+    - path: reports/figures/loss_ratio_by_province.png
+      hash: md5
+      md5: 6aeee739c082a33dd0f24dd3a896d72e
+      size: 28660
+    - path: reports/metrics/visualization.json
+      hash: md5
+      md5: 1b69b4cd8a377bb7c55b96b55616dcf9
+      size: 98

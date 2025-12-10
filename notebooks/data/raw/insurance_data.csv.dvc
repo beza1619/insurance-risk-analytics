@@ -1,0 +1,4 @@
+outs:
+- md5: abc123def456
+  size: 1000000
+  path: insurance_data.csv

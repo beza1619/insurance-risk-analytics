@@ -1,69 +1,48 @@
-# Insurance Risk Analytics Project 
- 
-## ?? Project Description 
-This project analyzes car insurance data for AlphaCare Insurance Solutions (ACIS). 
-The goal is to identify low-risk customers and optimize insurance premiums. 
- 
-## ?? Business Objectives 
-1. Find "low-risk" customer segments for targeted marketing 
-2. Test if location, gender, or vehicle type affects insurance risk 
-3. Build predictive models for claim amounts 
-4. Suggest optimal premium pricing 
- 
-## ?? Data Overview 
-- **Period**: February 2014 to August 2015 
-- **Location**: South Africa 
-- **Contains**: Customer info, vehicle details, policy info, claims data 
- 
-## ??? How to Get Started 
- 
-### 1. Install Python 
-Download Python 3.9+ from https://www.python.org/downloads/ 
-**IMPORTANT**: Check "Add Python to PATH" during installation! 
- 
-### 2. Install Required Packages 
-Open Command Prompt and type: 
-``` 
-pip install pandas numpy matplotlib seaborn jupyter scikit-learn xgboost dvc 
-``` 
- 
-### 3. Clone and Setup Project 
-``` 
-git clone [your-repository-url] 
-cd insurance-risk-analytics 
-``` 
- 
-### 4. Run Jupyter Notebook 
-``` 
-jupyter notebook 
-``` 
-Then open the notebooks in this order: 
-1. `01_eda.ipynb` - Exploratory Data Analysis 
-2. `02_hypothesis_testing.ipynb` - Statistical Tests 
-3. `03_modeling.ipynb` - Machine Learning Models 
- 
-## ?? Project Structure 
- 
-``` 
-insurance-risk-analytics/ 
-��� data/                    # All data files 
-�   ��� raw/                # Original data 
-�   ��� processed/          # Cleaned data 
-�   ��� interim/            # Intermediate files 
-��� notebooks/              # Jupyter notebooks 
-��� src/                    # Python source code 
-��� models/                 # Saved ML models 
-��� reports/                # Analysis reports 
-��� requirements.txt        # Python dependencies 
-��� README.md               # This file 
-``` 
- 
-## ?? Project Timeline 
- 
- 
-## ?? What I'm Learning 
-- Data analysis with Python and Pandas 
-- Statistical hypothesis testing 
-- Machine learning for insurance 
-- Data version control with DVC 
-- Git and GitHub for collaboration 
+# Insurance Risk Analytics for AlphaCare
+
+## 📋 Project Overview
+This project conducts comprehensive risk analytics for **AlphaCare Insurance Solutions** (ACIS) to optimize marketing strategies, refine pricing models, and enhance overall profitability. The analysis uses a reproducible data pipeline ensuring auditability and regulatory compliance.
+
+### Key Objectives
+1. **Risk Segmentation**: Identify high-risk and low-risk customer segments across provinces
+2. **Predictive Modeling**: Develop machine learning models to predict claim severity
+3. **Pricing Optimization**: Create data-driven premium recommendations
+4. **Strategic Insights**: Provide actionable marketing and underwriting strategies
+
+##  Repository Structure
+insurance-risk-analytics/
+├── data/
+│ ├── raw/ # Raw insurance data (DVC-tracked)
+│ └── processed/ # Cleaned and processed data
+├── notebooks/
+│ ├── 01_eda.ipynb # Exploratory Data Analysis notebook
+│ └── 02_analysis.ipynb # Statistical analysis notebook
+├── src/
+│ ├── data/ # Data processing scripts
+│ ├── features/ # Feature engineering
+│ ├── models/ # ML model training
+│ └── visualization/ # Plotting functions
+├── models/ # Trained models (DVC-tracked)
+├── reports/
+│ ├── figures/ # Generated visualizations
+│ └── metrics/ # Performance metrics
+├── tests/ # Test files
+├── .gitignore # Git ignore rules
+├── .dvcignore # DVC ignore rules
+├── dvc.yaml # DVC pipeline definition
+├── params.yaml # Configuration parameters
+├── requirements.txt # Python dependencies
+├── README.md # This file
+└── INTERIM_SUBMISSION.md # Interim submission report
+
+## 🚀 Quick Start Guide (Windows)
+
+### Prerequisites
+- Python 3.8 or higher
+- Git for Windows
+- DVC (Data Version Control)
+
+### Step 1: Clone the Repository
+```cmd
+git clone https://github.com/yourusername/insurance-risk-analytics.git
+cd insurance-risk-analytics

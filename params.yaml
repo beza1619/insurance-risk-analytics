@@ -1,0 +1,18 @@
+# Project Configuration
+data:
+  raw_path: "data/raw/insurance_sample_data.csv"
+  processed_path: "data/processed/cleaned_data.csv"
+  test_size: 0.2
+  random_state: 42
+
+preprocessing:
+  missing_threshold: 0.3
+  categorical_cols: ["province", "vehicle_type", "gender"]
+  numerical_cols: ["vehicle_age", "cubic_capacity", "premium"]
+
+model:
+  target: "total_claims"
+  features: ["vehicle_age", "cubic_capacity", "premium", "province_code", "vehicle_type_code"]
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
