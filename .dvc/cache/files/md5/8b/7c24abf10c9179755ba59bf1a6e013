@@ -1,0 +1,6 @@
+{
+  "rows": 5000,
+  "cols": 20,
+  "avg_loss_ratio": 1.5151942978826403,
+  "data_file": "data/raw/insurance_sample_data.csv"
+}

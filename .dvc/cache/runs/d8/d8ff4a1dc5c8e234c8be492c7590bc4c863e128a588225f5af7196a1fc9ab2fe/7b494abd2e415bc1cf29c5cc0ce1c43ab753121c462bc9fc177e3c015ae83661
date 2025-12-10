@@ -1,0 +1,19 @@
+cmd: python scripts/preprocess.py
+deps:
+- path: data/raw/insurance_sample_data.csv
+  hash: md5
+  md5: fc67f9816ee4963574a2f7f5c6b18ed3
+  size: 871045
+- path: scripts/preprocess.py
+  hash: md5
+  md5: 70e15269d6b25147fdbfa555dec877d9
+  size: 1732
+outs:
+- path: data/processed/cleaned_data.csv
+  hash: md5
+  md5: a427664ab7601dd73e7e286ccbc677e7
+  size: 861528
+- path: reports/metrics/preprocess.json
+  hash: md5
+  md5: 8b7c24abf10c9179755ba59bf1a6e013
+  size: 130
