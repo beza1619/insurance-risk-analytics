@@ -1,0 +1,100 @@
+{
+  "portfolio_overview": {
+    "total_policies": 5000,
+    "total_premium": 53369378.0,
+    "total_claims": 10383265.0,
+    "overall_loss_ratio": 0.19637037249474612,
+    "claim_frequency": 0.7018,
+    "average_premium": 10673.8756,
+    "average_claim": 2076.653
+  },
+  "province_analysis": {
+    "Gauteng": {
+      "loss_ratio_mean": 0.2696,
+      "loss_ratio_std": 0.4492,
+      "policy_count": 1274,
+      "total_premium": 17084080.0,
+      "total_claims": 4360479.0
+    },
+    "KZN": {
+      "loss_ratio_mean": 0.2615,
+      "loss_ratio_std": 0.4063,
+      "policy_count": 725,
+      "total_premium": 7581740.0,
+      "total_claims": 1879662.0
+    },
+    "Eastern Cape": {
+      "loss_ratio_mean": 0.2216,
+      "loss_ratio_std": 0.3889,
+      "policy_count": 725,
+      "total_premium": 7556059.0,
+      "total_claims": 1546392.0
+    },
+    "Western Cape": {
+      "loss_ratio_mean": 0.1309,
+      "loss_ratio_std": 0.2102,
+      "policy_count": 1532,
+      "total_premium": 14431823.0,
+      "total_claims": 1822872.0
+    },
+    "Free State": {
+      "loss_ratio_mean": 0.1177,
+      "loss_ratio_std": 0.1889,
+      "policy_count": 744,
+      "total_premium": 6715676.0,
+      "total_claims": 773860.0
+    }
+  },
+  "vehicle_type_analysis": {
+    "SUV": {
+      "loss_ratio_mean": 0.254,
+      "average_claims": 2972.9819,
+      "average_premium": 11916.7044,
+      "policy_count": 1272
+    },
+    "Bakkie": {
+      "loss_ratio_mean": 0.2469,
+      "average_claims": 2712.8566,
+      "average_premium": 11781.0123,
+      "policy_count": 976
+    },
+    "Coupe": {
+      "loss_ratio_mean": 0.184,
+      "average_claims": 1658.7797,
+      "average_premium": 9922.3128,
+      "policy_count": 227
+    },
+    "Hatchback": {
+      "loss_ratio_mean": 0.1717,
+      "average_claims": 1703.8417,
+      "average_premium": 9967.6108,
+      "policy_count": 758
+    },
+    "Sedan": {
+      "loss_ratio_mean": 0.1392,
+      "average_claims": 1293.6214,
+      "average_premium": 9567.2032,
+      "policy_count": 1767
+    }
+  },
+  "gender_analysis": {
+    "male": {
+      "claim_frequency": 0.703,
+      "loss_ratio": 0.1984,
+      "policy_count": 2754
+    },
+    "female": {
+      "claim_frequency": 0.7004,
+      "loss_ratio": 0.1938,
+      "policy_count": 2246
+    },
+    "difference_percentage": 0.37121644774413703
+  },
+  "key_insights": {
+    "highest_risk_province": "Gauteng",
+    "lowest_risk_province": "Free State",
+    "risk_ratio": 2.290569243840272,
+    "suv_bakkie_vs_sedan_hatch_ratio": 1.684814733863751,
+    "gender_difference_percentage": 0.37121644774413703
+  }
+}

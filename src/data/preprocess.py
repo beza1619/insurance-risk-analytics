@@ -1,12 +1,18 @@
 import pandas as pd
 import numpy as np
-import yaml
+import json
 from pathlib import Path
 
-def load_config():
-    """Load configuration from params.yaml"""
-    with open('params.yaml', 'r') as f:
-        return yaml.safe_load(f)
+# Simple config since yaml might not be installed
+CONFIG = {
+    'data': {
+        'raw_path': 'data/raw/insurance_sample_data.csv',
+        'processed_path': 'data/processed/cleaned_data.csv'
+    },
+    'preprocessing': {
+        'missing_threshold': 0.3
+    }
+}
 
 def load_data(filepath):
     """Load insurance data"""
@@ -15,26 +21,25 @@ def load_data(filepath):
 def clean_data(df):
     """Clean the insurance data"""
     # Handle missing values
-    df = df.fillna({
-        'vehicle_age': df['vehicle_age'].median(),
-        'cubic_capacity': df['cubic_capacity'].median(),
-        'premium': df['premium'].median(),
-        'total_claims': 0
-    })
+    numeric_cols = df.select_dtypes(include=[np.number]).columns
+    for col in numeric_cols:
+        if df[col].isnull().any():
+            df[col] = df[col].fillna(df[col].median())
     
     # Create new features
-    df['loss_ratio'] = df['total_claims'] / df['premium'].replace(0, 1)
-    df['has_previous_claims'] = (df.get('previous_claims', 0) > 0).astype(int)
+    if 'premium' in df.columns and 'total_claims' in df.columns:
+        df['loss_ratio'] = df['total_claims'] / df['premium'].replace(0, 1)
+    
+    if 'previous_claims' in df.columns:
+        df['has_previous_claims'] = (df['previous_claims'] > 0).astype(int)
     
     # Encode categorical variables
-    if 'province' in df.columns:
-        df['province_code'] = pd.Categorical(df['province']).codes
-    
-    if 'vehicle_type' in df.columns:
-        df['vehicle_type_code'] = pd.Categorical(df['vehicle_type']).codes
+    categorical_cols = df.select_dtypes(include=['object']).columns
+    for col in categorical_cols:
+        if col in df.columns:
+            df[f'{col}_code'] = pd.Categorical(df[col]).codes
     
     return df
-
 def save_data(df, filepath):
     """Save processed data"""
     Path(filepath).parent.mkdir(parents=True, exist_ok=True)

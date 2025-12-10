@@ -1,0 +1,16 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/data/preprocess.py
+    deps:
+    - path: src/data/preprocess.py
+      md5: abc123def456
+    - path: data/raw/insurance_data.csv
+      md5: 1234567890abcdef1234567890abcdef
+    params:
+      params.yaml:
+        preprocess.test_size: 0.2
+        preprocess.random_state: 42
+    outs:
+    - path: data/processed/cleaned_data.csv
+      md5: fedcba0987654321

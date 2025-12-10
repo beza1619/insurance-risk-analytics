@@ -1,0 +1,35 @@
+{
+  "hypothesis_1": {
+    "test": "One-way ANOVA",
+    "null_hypothesis": "No risk differences across provinces",
+    "f_statistic": 17.954,
+    "p_value": 0.0,
+    "alpha": 0.05,
+    "reject_null": "True",
+    "conclusion": "REJECT",
+    "business_implication": "Geographic-based pricing and marketing are empirically justified"
+  },
+  "hypothesis_2_3": {
+    "test": "Welch's t-test",
+    "null_hypothesis": "No risk differences between high/low density zip codes",
+    "t_statistic": -1.5988,
+    "p_value": 0.121977,
+    "alpha": 0.05,
+    "reject_null": "False",
+    "conclusion": "FAIL TO REJECT",
+    "business_implication": "Zip-code-level analysis may require more data"
+  },
+  "hypothesis_4": {
+    "test": "Chi-square test",
+    "null_hypothesis": "No association between gender and claim frequency",
+    "chi2_statistic": 1.3932,
+    "p_value": 0.237866,
+    "degrees_freedom": 1,
+    "alpha": 0.05,
+    "reject_null": "False",
+    "male_claim_rate": 0.742,
+    "female_claim_rate": 0.69,
+    "percentage_difference": 7.5,
+    "business_interpretation": "While a statistical difference exists, pricing must rely on a multidimensional risk assessment"
+  }
+}

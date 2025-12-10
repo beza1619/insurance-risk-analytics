@@ -1,37 +1,46 @@
 schema: '2.0'
 stages:
   preprocess:
-    cmd: python src/data/preprocess_simple.py
+    cmd: python scripts/preprocess.py
     deps:
     - path: data/raw/insurance_sample_data.csv
       hash: md5
       md5: fc67f9816ee4963574a2f7f5c6b18ed3
       size: 871045
-    - path: src/data/preprocess_simple.py
+    - path: scripts/preprocess.py
       hash: md5
-      md5: a07a85bf190efe4fc13de936cd8397bb
-      size: 2317
+      md5: 70e15269d6b25147fdbfa555dec877d9
+      size: 1732
     outs:
     - path: data/processed/cleaned_data.csv
       hash: md5
-      md5: ec03dfad302a8a27b2dd613e04131b24
-      size: 861196
-    - path: reports/metrics/preprocess_metrics.json
+      md5: a427664ab7601dd73e7e286ccbc677e7
+      size: 861528
+    - path: reports/metrics/preprocess.json
       hash: md5
-      md5: 78f9a8387ffdcc114d96ca900baac825
-      size: 242
-  check_data:
-    cmd: python -c "import pandas as pd; 
-      df=pd.read_csv('data/raw/insurance_sample_data.csv'); 
-      metrics={'rows':len(df),'cols':len(df.columns)}; import json; 
-      open('reports/metrics/data_check.json','w').write(json.dumps(metrics,indent=2))"
+      md5: 8b7c24abf10c9179755ba59bf1a6e013
+      size: 130
+  visualize:
+    cmd: python scripts/visualize.py
     deps:
-    - path: data/raw/insurance_sample_data.csv
+    - path: data/processed/cleaned_data.csv
       hash: md5
-      md5: fc67f9816ee4963574a2f7f5c6b18ed3
-      size: 871045
+      md5: a427664ab7601dd73e7e286ccbc677e7
+      size: 861528
+    - path: scripts/visualize.py
+      hash: md5
+      md5: b632e76bc6821ddd8dc91be09e26b5df
+      size: 2114
     outs:
-    - path: reports/metrics/data_check.json
+    - path: reports/figures/correlation_matrix.png
       hash: md5
-      md5: ebed147e7780704ba1ecd8dcdcd65dee
-      size: 35
+      md5: 2fccb9bdf0f6d01b542bd68dea2cabe2
+      size: 87504
+    - path: reports/figures/loss_ratio_by_province.png
+      hash: md5
+      md5: 6aeee739c082a33dd0f24dd3a896d72e
+      size: 28660
+    - path: reports/metrics/visualization.json
+      hash: md5
+      md5: 1b69b4cd8a377bb7c55b96b55616dcf9
+      size: 98

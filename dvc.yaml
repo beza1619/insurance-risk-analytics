@@ -1,34 +1,8 @@
 stages:
   preprocess:
-    cmd: python -c "
-import pandas as pd
-import json
-from pathlib import Path
-
-# Load data
-df = pd.read_csv('data/raw/insurance_sample_data.csv')
-print(f'Loaded: {df.shape}')
-
-# Basic preprocessing
-if 'TotalClaims' in df.columns and 'TotalPremium' in df.columns:
-    df['LossRatio'] = df['TotalClaims'] / df['TotalPremium'].replace(0, 1)
-
-# Save processed
-Path('data/processed').mkdir(exist_ok=True)
-df.to_csv('data/processed/cleaned_data.csv', index=False)
-
-# Save metrics
-Path('reports/metrics').mkdir(exist_ok=True)
-metrics = {
-    'rows': int(len(df)),
-    'cols': int(len(df.columns)),
-    'avg_loss_ratio': float(df['LossRatio'].mean()) if 'LossRatio' in df.columns else 0
-}
-with open('reports/metrics/preprocess.json', 'w') as f:
-    json.dump(metrics, f, indent=2)
-print('Preprocessing done')
-"
+    cmd: python scripts/preprocess.py
     deps:
+      - scripts/preprocess.py
       - data/raw/insurance_sample_data.csv
     outs:
       - data/processed/cleaned_data.csv
@@ -36,10 +10,10 @@ print('Preprocessing done')
       - reports/metrics/preprocess.json
 
   visualize:
-    cmd: python src/visualization/create_plots_simple.py
+    cmd: python scripts/visualize.py
     deps:
+      - scripts/visualize.py
       - data/processed/cleaned_data.csv
-      - src/visualization/create_plots_simple.py
     outs:
       - reports/figures/loss_ratio_by_province.png
       - reports/figures/correlation_matrix.png

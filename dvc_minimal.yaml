@@ -1,0 +1,5 @@
+stages:
+  test:
+    cmd: python -c "print('DVC test'); open('test.txt', 'w').write('success')"
+    outs:
+      - test.txt

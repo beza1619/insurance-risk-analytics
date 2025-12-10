@@ -1,0 +1,6 @@
+{
+  "total_policies": 5000,
+  "total_columns": 20,
+  "numeric_columns": 11,
+  "categorical_columns": 8
+}
